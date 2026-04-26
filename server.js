@@ -27,6 +27,7 @@ io.on("connection", (socket) => {
   // El cliente manda su nombre al conectarse
   socket.on("register", ({ name, tag }) => {
     users[socket.id] = { name, tag, id: socket.id };
+    socket.emit("my_id", { id: socket.id });
     console.log(`[register] ${name}${tag}`);
 
     // Mandá la lista de usuarios conectados a todos
